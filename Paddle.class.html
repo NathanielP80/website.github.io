@@ -1,0 +1,121 @@
+<html>
+<head>
+<title>Paddle.class</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #808080;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #cc7832;}
+.s3 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Paddle.class</font>
+</center></td></tr></table>
+<pre><span class="s0">//</span>
+<span class="s0">// Source code recreated from a .class file by IntelliJ IDEA</span>
+<span class="s0">// (powered by FernFlower decompiler)</span>
+<span class="s0">//</span>
+
+<span class="s2">import </span><span class="s1">java.awt.Color</span><span class="s2">;</span>
+<span class="s2">import </span><span class="s1">java.awt.Graphics</span><span class="s2">;</span>
+<span class="s2">import </span><span class="s1">java.awt.Rectangle</span><span class="s2">;</span>
+<span class="s2">import </span><span class="s1">java.awt.event.KeyEvent</span><span class="s2">;</span>
+
+<span class="s2">public class </span><span class="s1">Paddle </span><span class="s2">extends </span><span class="s1">Rectangle {</span>
+    <span class="s2">int </span><span class="s1">id</span><span class="s2">;</span>
+    <span class="s2">int </span><span class="s1">yVelocity</span><span class="s2">;</span>
+    <span class="s2">int </span><span class="s1">speed = </span><span class="s3">10</span><span class="s2">;</span>
+
+    <span class="s2">public </span><span class="s1">Paddle(</span><span class="s2">int </span><span class="s1">x</span><span class="s2">, int </span><span class="s1">y</span><span class="s2">, int </span><span class="s1">PADDLE_WIDTH</span><span class="s2">, int </span><span class="s1">PADDLE_HEIGHT</span><span class="s2">, int </span><span class="s1">id) {</span>
+        <span class="s2">super</span><span class="s1">(x</span><span class="s2">, </span><span class="s1">y</span><span class="s2">, </span><span class="s1">PADDLE_WIDTH</span><span class="s2">, </span><span class="s1">PADDLE_HEIGHT)</span><span class="s2">;</span>
+        <span class="s2">this</span><span class="s1">.id = id</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s2">public void </span><span class="s1">keyPresses(KeyEvent e) {</span>
+        <span class="s2">switch </span><span class="s1">(</span><span class="s2">this</span><span class="s1">.id) {</span>
+            <span class="s2">case </span><span class="s3">1</span><span class="s1">:</span>
+                <span class="s2">if </span><span class="s1">(e.getKeyCode() == </span><span class="s3">87</span><span class="s1">) {</span>
+                    <span class="s2">this</span><span class="s1">.setYDirection(-</span><span class="s2">this</span><span class="s1">.speed)</span><span class="s2">;</span>
+                    <span class="s2">this</span><span class="s1">.move()</span><span class="s2">;</span>
+                <span class="s1">}</span>
+
+                <span class="s2">if </span><span class="s1">(e.getKeyCode() == </span><span class="s3">83</span><span class="s1">) {</span>
+                    <span class="s2">this</span><span class="s1">.setYDirection(</span><span class="s2">this</span><span class="s1">.speed)</span><span class="s2">;</span>
+                    <span class="s2">this</span><span class="s1">.move()</span><span class="s2">;</span>
+                <span class="s1">}</span>
+                <span class="s2">break;</span>
+            <span class="s2">case </span><span class="s3">2</span><span class="s1">:</span>
+                <span class="s2">if </span><span class="s1">(e.getKeyCode() == </span><span class="s3">38</span><span class="s1">) {</span>
+                    <span class="s2">this</span><span class="s1">.setYDirection(-</span><span class="s2">this</span><span class="s1">.speed)</span><span class="s2">;</span>
+                    <span class="s2">this</span><span class="s1">.move()</span><span class="s2">;</span>
+                <span class="s1">}</span>
+
+                <span class="s2">if </span><span class="s1">(e.getKeyCode() == </span><span class="s3">40</span><span class="s1">) {</span>
+                    <span class="s2">this</span><span class="s1">.setYDirection(</span><span class="s2">this</span><span class="s1">.speed)</span><span class="s2">;</span>
+                    <span class="s2">this</span><span class="s1">.move()</span><span class="s2">;</span>
+                <span class="s1">}</span>
+        <span class="s1">}</span>
+
+    <span class="s1">}</span>
+
+    <span class="s2">public void </span><span class="s1">keyReleased(KeyEvent e) {</span>
+        <span class="s2">switch </span><span class="s1">(</span><span class="s2">this</span><span class="s1">.id) {</span>
+            <span class="s2">case </span><span class="s3">1</span><span class="s1">:</span>
+                <span class="s2">if </span><span class="s1">(e.getKeyCode() == </span><span class="s3">87</span><span class="s1">) {</span>
+                    <span class="s2">this</span><span class="s1">.setYDirection(</span><span class="s3">0</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s2">this</span><span class="s1">.move()</span><span class="s2">;</span>
+                <span class="s1">}</span>
+
+                <span class="s2">if </span><span class="s1">(e.getKeyCode() == </span><span class="s3">83</span><span class="s1">) {</span>
+                    <span class="s2">this</span><span class="s1">.setYDirection(</span><span class="s3">0</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s2">this</span><span class="s1">.move()</span><span class="s2">;</span>
+                <span class="s1">}</span>
+                <span class="s2">break;</span>
+            <span class="s2">case </span><span class="s3">2</span><span class="s1">:</span>
+                <span class="s2">if </span><span class="s1">(e.getKeyCode() == </span><span class="s3">38</span><span class="s1">) {</span>
+                    <span class="s2">this</span><span class="s1">.setYDirection(</span><span class="s3">0</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s2">this</span><span class="s1">.move()</span><span class="s2">;</span>
+                <span class="s1">}</span>
+
+                <span class="s2">if </span><span class="s1">(e.getKeyCode() == </span><span class="s3">40</span><span class="s1">) {</span>
+                    <span class="s2">this</span><span class="s1">.setYDirection(</span><span class="s3">0</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s2">this</span><span class="s1">.move()</span><span class="s2">;</span>
+                <span class="s1">}</span>
+        <span class="s1">}</span>
+
+    <span class="s1">}</span>
+
+    <span class="s2">public void </span><span class="s1">setYDirection(</span><span class="s2">int </span><span class="s1">yDirection) {</span>
+        <span class="s2">this</span><span class="s1">.yVelocity = yDirection</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s2">public void </span><span class="s1">move() {</span>
+        <span class="s2">this</span><span class="s1">.y += </span><span class="s2">this</span><span class="s1">.yVelocity</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s2">public void </span><span class="s1">draw(Graphics g) {</span>
+        <span class="s2">if </span><span class="s1">(</span><span class="s2">this</span><span class="s1">.id == </span><span class="s3">1</span><span class="s1">) {</span>
+            <span class="s1">g.setColor(Color.BLUE)</span><span class="s2">;</span>
+        <span class="s1">} </span><span class="s2">else </span><span class="s1">{</span>
+            <span class="s1">g.setColor(Color.GREEN)</span><span class="s2">;</span>
+        <span class="s1">}</span>
+
+        <span class="s1">g.fillRect(</span><span class="s2">this</span><span class="s1">.x</span><span class="s2">, this</span><span class="s1">.y</span><span class="s2">, this</span><span class="s1">.width</span><span class="s2">, this</span><span class="s1">.height)</span><span class="s2">;</span>
+    <span class="s1">}</span>
+<span class="s1">}</span>
+</pre>
+<a href = "Ball.class.html">
+    <button
+    style ="background-color: 
+    rgba(255, 255, 255, 0.918);
+    width:100px; height:50px;
+    border-radius: 8px;">
+     Next
+    </button>
+</a>
+</body>
+</html>

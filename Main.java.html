@@ -1,0 +1,224 @@
+<html>
+<head>
+<title>Main.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #808080;}
+.s3 { color: #6897bb;}
+.s4 { color: #6a8759;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Main.java</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">javax.swing.*</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.awt.*</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.awt.event.*</span><span class="s0">;</span>
+
+<span class="s2">//This is the class declaration and it implements ActionListeners</span>
+<span class="s0">public class </span><span class="s1">Main </span><span class="s0">implements </span><span class="s1">ActionListener {</span>
+
+    <span class="s2">//These are all the objects and variables that are added</span>
+    <span class="s1">JFrame frame</span><span class="s0">;</span>
+    <span class="s1">JTextField textField</span><span class="s0">;</span>
+    <span class="s1">JButton[] numberButtons = </span><span class="s0">new </span><span class="s1">JButton[</span><span class="s3">10</span><span class="s1">]</span><span class="s0">;</span>
+    <span class="s1">JButton[] functionButtons = </span><span class="s0">new </span><span class="s1">JButton[</span><span class="s3">9</span><span class="s1">]</span><span class="s0">;</span>
+    <span class="s1">JButton addButton</span><span class="s0">,</span><span class="s1">subButton</span><span class="s0">,</span><span class="s1">mulButton</span><span class="s0">,</span><span class="s1">divButton</span><span class="s0">;</span>
+    <span class="s1">JButton decButton</span><span class="s0">, </span><span class="s1">equButton</span><span class="s0">, </span><span class="s1">delButton</span><span class="s0">, </span><span class="s1">clrButton</span><span class="s0">, </span><span class="s1">negButton</span><span class="s0">;</span>
+    <span class="s1">JPanel panel</span><span class="s0">;</span>
+
+    <span class="s2">//This sets it to default font</span>
+    <span class="s1">Font myFont = </span><span class="s0">new </span><span class="s1">Font(</span><span class="s4">&quot;&quot;</span><span class="s0">,</span><span class="s1">Font.BOLD</span><span class="s0">,</span><span class="s3">30</span><span class="s1">)</span><span class="s0">;</span>
+
+
+    <span class="s0">double </span><span class="s1">num1=</span><span class="s3">0</span><span class="s0">,</span><span class="s1">num2=</span><span class="s3">0</span><span class="s0">,</span><span class="s1">result=</span><span class="s3">0</span><span class="s0">;</span>
+    <span class="s0">char </span><span class="s1">operator</span><span class="s0">;</span>
+
+    <span class="s2">//This is the main constructor which creates the frame and everything in it</span>
+    <span class="s1">Main(){</span>
+        <span class="s2">//This sets the frame object its height and width and how it closes</span>
+        <span class="s1">frame = </span><span class="s0">new </span><span class="s1">JFrame(</span><span class="s4">&quot;Calc&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)</span><span class="s0">;</span>
+        <span class="s1">frame.setSize(</span><span class="s3">420</span><span class="s0">,</span><span class="s3">550</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">frame.setLayout(</span><span class="s0">null</span><span class="s1">)</span><span class="s0">;</span>
+
+        <span class="s2">//This sets the text field on the frame which stores the visuals for the numbers and answers</span>
+        <span class="s1">textField = </span><span class="s0">new </span><span class="s1">JTextField()</span><span class="s0">;</span>
+        <span class="s1">textField.setBounds(</span><span class="s3">50</span><span class="s0">, </span><span class="s3">25</span><span class="s0">, </span><span class="s3">300</span><span class="s0">, </span><span class="s3">50</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">textField.setFont(myFont)</span><span class="s0">;</span>
+        <span class="s1">textField.setBackground(Color.gray)</span><span class="s0">;</span>
+        <span class="s1">textField.setEditable(</span><span class="s0">false</span><span class="s1">)</span><span class="s0">;</span>
+
+        <span class="s2">//This initiates all the JButtons</span>
+        <span class="s1">addButton = </span><span class="s0">new </span><span class="s1">JButton(</span><span class="s4">&quot;+&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">subButton = </span><span class="s0">new </span><span class="s1">JButton(</span><span class="s4">&quot;-&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">mulButton = </span><span class="s0">new </span><span class="s1">JButton(</span><span class="s4">&quot;*&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">divButton = </span><span class="s0">new </span><span class="s1">JButton(</span><span class="s4">&quot;/&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">decButton = </span><span class="s0">new </span><span class="s1">JButton(</span><span class="s4">&quot;.&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">equButton = </span><span class="s0">new </span><span class="s1">JButton(</span><span class="s4">&quot;=&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">delButton = </span><span class="s0">new </span><span class="s1">JButton(</span><span class="s4">&quot;Del&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">clrButton = </span><span class="s0">new </span><span class="s1">JButton(</span><span class="s4">&quot;Clr&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">negButton = </span><span class="s0">new </span><span class="s1">JButton(</span><span class="s4">&quot;(-)&quot;</span><span class="s1">)</span><span class="s0">;</span>
+
+        <span class="s2">//This set which point each button is in the array</span>
+        <span class="s1">functionButtons[</span><span class="s3">0</span><span class="s1">] = addButton</span><span class="s0">;</span>
+        <span class="s1">functionButtons[</span><span class="s3">1</span><span class="s1">] = subButton</span><span class="s0">;</span>
+        <span class="s1">functionButtons[</span><span class="s3">2</span><span class="s1">] = mulButton</span><span class="s0">;</span>
+        <span class="s1">functionButtons[</span><span class="s3">3</span><span class="s1">] = divButton</span><span class="s0">;</span>
+        <span class="s1">functionButtons[</span><span class="s3">4</span><span class="s1">] = decButton</span><span class="s0">;</span>
+        <span class="s1">functionButtons[</span><span class="s3">5</span><span class="s1">] = equButton</span><span class="s0">;</span>
+        <span class="s1">functionButtons[</span><span class="s3">6</span><span class="s1">] = delButton</span><span class="s0">;</span>
+        <span class="s1">functionButtons[</span><span class="s3">7</span><span class="s1">] = clrButton</span><span class="s0">;</span>
+        <span class="s1">functionButtons[</span><span class="s3">8</span><span class="s1">] = negButton</span><span class="s0">;</span>
+
+        <span class="s2">//This adds each functionButton to the actionListener and the font</span>
+        <span class="s0">for</span><span class="s1">(</span><span class="s0">int </span><span class="s1">i = </span><span class="s3">0</span><span class="s0">; </span><span class="s1">i&lt;</span><span class="s3">8</span><span class="s0">; </span><span class="s1">i++) {</span>
+            <span class="s1">functionButtons[i].addActionListener(</span><span class="s0">this</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">functionButtons[i].setFont(myFont)</span><span class="s0">;</span>
+            <span class="s1">functionButtons[i].setFocusable(</span><span class="s0">false</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">}</span>
+
+        <span class="s2">//This initiates the numberButtons using a for loop for number below 10 and adds it to the action listener</span>
+        <span class="s0">for</span><span class="s1">(</span><span class="s0">int </span><span class="s1">i =</span><span class="s3">0</span><span class="s0">; </span><span class="s1">i&lt;</span><span class="s3">10</span><span class="s0">; </span><span class="s1">i++) {</span>
+            <span class="s1">numberButtons[i] = </span><span class="s0">new </span><span class="s1">JButton(String.valueOf(i))</span><span class="s0">;</span>
+            <span class="s1">numberButtons[i].addActionListener(</span><span class="s0">this</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s1">numberButtons[i].setFont(myFont)</span><span class="s0">;</span>
+            <span class="s1">numberButtons[i].setFocusable(</span><span class="s0">false</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">}</span>
+
+        <span class="s2">//This set the location for the neg, del and clr buttons on the frame</span>
+        <span class="s1">negButton.setBounds(</span><span class="s3">50</span><span class="s0">,</span><span class="s3">430</span><span class="s0">,</span><span class="s3">100</span><span class="s0">,</span><span class="s3">50</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">delButton.setBounds(</span><span class="s3">150</span><span class="s0">,</span><span class="s3">430</span><span class="s0">,</span><span class="s3">100</span><span class="s0">,</span><span class="s3">50</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">clrButton.setBounds(</span><span class="s3">250</span><span class="s0">,</span><span class="s3">430</span><span class="s0">,</span><span class="s3">100</span><span class="s0">,</span><span class="s3">50</span><span class="s1">)</span><span class="s0">;</span>
+
+        <span class="s2">//This creates the JPanel and where it is located also the grid that it follows and color</span>
+        <span class="s1">panel = </span><span class="s0">new </span><span class="s1">JPanel()</span><span class="s0">;</span>
+        <span class="s1">panel.setBounds(</span><span class="s3">50</span><span class="s0">, </span><span class="s3">100</span><span class="s0">, </span><span class="s3">300</span><span class="s0">, </span><span class="s3">300</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">panel.setLayout(</span><span class="s0">new </span><span class="s1">GridLayout(</span><span class="s3">4</span><span class="s0">,</span><span class="s3">4</span><span class="s0">,</span><span class="s3">10</span><span class="s0">,</span><span class="s3">10</span><span class="s1">))</span><span class="s0">;</span>
+        <span class="s1">panel.setBackground(Color.gray)</span><span class="s0">;</span>
+
+        <span class="s2">//This adds all the numberButtons and the rest of the functionButton on the panel grid</span>
+        <span class="s1">panel.add(numberButtons[</span><span class="s3">1</span><span class="s1">])</span><span class="s0">;</span>
+        <span class="s1">panel.add(numberButtons[</span><span class="s3">2</span><span class="s1">])</span><span class="s0">;</span>
+        <span class="s1">panel.add(numberButtons[</span><span class="s3">3</span><span class="s1">])</span><span class="s0">;</span>
+        <span class="s1">panel.add(addButton)</span><span class="s0">;</span>
+        <span class="s1">panel.add(numberButtons[</span><span class="s3">4</span><span class="s1">])</span><span class="s0">;</span>
+        <span class="s1">panel.add(numberButtons[</span><span class="s3">5</span><span class="s1">])</span><span class="s0">;</span>
+        <span class="s1">panel.add(numberButtons[</span><span class="s3">6</span><span class="s1">])</span><span class="s0">;</span>
+        <span class="s1">panel.add(subButton)</span><span class="s0">;</span>
+        <span class="s1">panel.add(numberButtons[</span><span class="s3">7</span><span class="s1">])</span><span class="s0">;</span>
+        <span class="s1">panel.add(numberButtons[</span><span class="s3">8</span><span class="s1">])</span><span class="s0">;</span>
+        <span class="s1">panel.add(numberButtons[</span><span class="s3">9</span><span class="s1">])</span><span class="s0">;</span>
+        <span class="s1">panel.add(mulButton)</span><span class="s0">;</span>
+        <span class="s1">panel.add(decButton)</span><span class="s0">;</span>
+        <span class="s1">panel.add(numberButtons[</span><span class="s3">0</span><span class="s1">])</span><span class="s0">;</span>
+        <span class="s1">panel.add(equButton)</span><span class="s0">;</span>
+        <span class="s1">panel.add(divButton)</span><span class="s0">;</span>
+
+        <span class="s1">negButton.addActionListener(</span><span class="s0">this</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">delButton.addActionListener(</span><span class="s0">this</span><span class="s1">)</span><span class="s0">;</span>
+
+        <span class="s2">//This adds the panel,negButton,delButton,clrButton and the textField to the frame and sets it visible</span>
+        <span class="s1">frame.add(panel)</span><span class="s0">;</span>
+        <span class="s1">frame.add(negButton)</span><span class="s0">;</span>
+        <span class="s1">frame.add(delButton)</span><span class="s0">;</span>
+        <span class="s1">frame.add(clrButton)</span><span class="s0">;</span>
+        <span class="s1">frame.add(textField)</span><span class="s0">;</span>
+        <span class="s1">frame.setVisible(</span><span class="s0">true</span><span class="s1">)</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s2">//This is the main method which creates the main object running the constructor</span>
+    <span class="s0">public static void </span><span class="s1">main(String[] args) {</span>
+        <span class="s1">Main c = </span><span class="s0">new </span><span class="s1">Main()</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s2">//This performs all the actions that the buttons make.</span>
+    <span class="s1">@Override</span>
+    <span class="s0">public void </span><span class="s1">actionPerformed(ActionEvent e) {</span>
+
+        <span class="s2">//Creates all the number values and turn them into a string value for the textField</span>
+        <span class="s0">for</span><span class="s1">(</span><span class="s0">int </span><span class="s1">i=</span><span class="s3">0</span><span class="s0">; </span><span class="s1">i&lt;</span><span class="s3">10</span><span class="s0">; </span><span class="s1">i++) {</span>
+            <span class="s0">if</span><span class="s1">(e.getSource() == numberButtons[i]){</span>
+                <span class="s1">textField.setText(textField.getText().concat(String.valueOf(i)))</span><span class="s0">;</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+        <span class="s2">//This sets the decButton to add a decimal point in the text field</span>
+        <span class="s0">if</span><span class="s1">(e.getSource()==decButton){</span>
+            <span class="s1">textField.setText(textField.getText().concat(</span><span class="s4">&quot;.&quot;</span><span class="s1">))</span><span class="s0">;</span>
+        <span class="s1">}</span>
+        <span class="s2">//This sets the addButtons operator to a '+' and sets it to the textField</span>
+        <span class="s0">if</span><span class="s1">(e.getSource()==addButton){</span>
+            <span class="s1">num1 = Double.parseDouble(textField.getText())</span><span class="s0">;</span>
+            <span class="s1">operator = </span><span class="s4">'+'</span><span class="s0">;</span>
+            <span class="s1">textField.setText(</span><span class="s4">&quot;&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">}</span>
+        <span class="s2">//This sets the subButton operator to a '-' and set it to the textField</span>
+        <span class="s0">if</span><span class="s1">(e.getSource()==subButton){</span>
+            <span class="s1">num1 = Double.parseDouble(textField.getText())</span><span class="s0">;</span>
+            <span class="s1">operator = </span><span class="s4">'-'</span><span class="s0">;</span>
+            <span class="s1">textField.setText(</span><span class="s4">&quot;&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">}</span>
+        <span class="s2">//This sets the mulButton operator to a '*' and set it to the textField</span>
+        <span class="s0">if</span><span class="s1">(e.getSource()==mulButton){</span>
+            <span class="s1">num1 = Double.parseDouble(textField.getText())</span><span class="s0">;</span>
+            <span class="s1">operator = </span><span class="s4">'*'</span><span class="s0">;</span>
+            <span class="s1">textField.setText(</span><span class="s4">&quot;&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">}</span>
+        <span class="s2">//This sets the dicButton operator to a '/' and set it to the textField</span>
+        <span class="s0">if</span><span class="s1">(e.getSource()==divButton){</span>
+            <span class="s1">num1 = Double.parseDouble(textField.getText())</span><span class="s0">;</span>
+            <span class="s1">operator = </span><span class="s4">'/'</span><span class="s0">;</span>
+            <span class="s1">textField.setText(</span><span class="s4">&quot;&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">}</span>
+        <span class="s2">//This sets the equButton and makes it complete the equation for each type of operator and show the result</span>
+        <span class="s0">if</span><span class="s1">(e.getSource()==equButton) {</span>
+            <span class="s1">num2=Double.parseDouble(textField.getText())</span><span class="s0">;</span>
+
+            <span class="s0">switch </span><span class="s1">(operator) {</span>
+                <span class="s0">case </span><span class="s4">'+' </span><span class="s1">-&gt; result = num1 + num2</span><span class="s0">;</span>
+                <span class="s0">case </span><span class="s4">'-' </span><span class="s1">-&gt; result = num1 - num2</span><span class="s0">;</span>
+                <span class="s0">case </span><span class="s4">'*' </span><span class="s1">-&gt; result = num1 * num2</span><span class="s0">;</span>
+                <span class="s0">case </span><span class="s4">'/' </span><span class="s1">-&gt; result = num1 / num2</span><span class="s0">;</span>
+            <span class="s1">}</span>
+                <span class="s1">textField.setText(String.valueOf(result))</span><span class="s0">;</span>
+                <span class="s1">num1=result</span><span class="s0">;</span>
+            <span class="s1">}</span>
+
+        <span class="s2">//This sets the clr button and makes the text field clear</span>
+        <span class="s0">if</span><span class="s1">(e.getSource()==clrButton){</span>
+            <span class="s1">textField.setText(</span><span class="s4">&quot;&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">}</span>
+
+        <span class="s2">//This sets the del button and make the first value be deleted on the textField</span>
+        <span class="s0">if</span><span class="s1">(e.getSource()==delButton){</span>
+            <span class="s1">String s = textField.getText()</span><span class="s0">;</span>
+            <span class="s1">textField.setText(</span><span class="s4">&quot;&quot;</span><span class="s1">)</span><span class="s0">;</span>
+            <span class="s0">for</span><span class="s1">(</span><span class="s0">int </span><span class="s1">i=</span><span class="s3">0</span><span class="s0">; </span><span class="s1">i&lt;s.length()-</span><span class="s3">1</span><span class="s0">; </span><span class="s1">i++){</span>
+                <span class="s1">textField.setText(textField.getText()+s.charAt(i))</span><span class="s0">;</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+
+        <span class="s2">//This adds the function to the negButton which makes the numbers negative by multiplying them by -1</span>
+        <span class="s0">if</span><span class="s1">(e.getSource()==negButton){</span>
+            <span class="s0">double </span><span class="s1">temp = Double.parseDouble(textField.getText())</span><span class="s0">;</span>
+            <span class="s1">temp*=-</span><span class="s3">1</span><span class="s0">;</span>
+            <span class="s1">textField.setText(String.valueOf(temp))</span><span class="s0">;</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+<span class="s1">}</span></pre>
+<a href = "CalcWeb.html">
+    <button
+    style ="background-color: 
+    rgba(255, 255, 255, 0.918);
+    width:100px; height:50px;
+    border-radius: 8px;">
+     back
+    </button>
+</a>
+</body>
+</html>
